@@ -23,30 +23,33 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (strlen($user_name) >= 2) {
 
         // spara till databasen
-        $sql = "SELECT * FROM `user` WHERE `user_name` = '$user_name' AND `user_password` = '$user_password'";
+        $sql = "SELECT * FROM `user` WHERE `user_name` = '$user_name'";
+        // $sql = "SELECT * FROM `user` WHERE `user_name` = '" . $user_name . "' AND `user_password` = '" . $user_password . "'";
 
-        echo($sql);
+        // echo($sql);
 
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->query($sql);
             $user = $result->fetch();
             // var_dump($sql);
+            print_r2($result);
+            print_r2($user);
 
             if (!$user) {
                 $_SESSION['message'] = "Username does not exsists";
-                echo "username failed";
-                // header("location: login.php");
-                // exit();
+                // echo "username failed";
+                header("location: login.php");
+                exit();
             }
 
             $correct_password = password_verify($user_password, $user['user_password']);
 
             if (!$correct_password) {
                 $_SESSION['message'] = "Invalid password";
-                echo "password failed";
-                // header("location: login.php");
-                // exit();
+                header("location: login.php");
+                // echo "password failed";
+                exit();
             }
 
             header("location: dashboard.php");
@@ -85,8 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     </h1>
 
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <input type="text" name="user_name" id="user_name" placeholder="Username">
-        <input type="password" name="user_password" id="user_password" placeholder="Password">
+        <input type="text" name="user_name" id="user_name" placeholder="Username" required minlength="2" maxlength="25">
+        <input type="password" name="user_password" id="user_password" placeholder="Password" required minlength="2" maxlength="255">
         <button type="submit">Sign in</button>
     </form>
 
