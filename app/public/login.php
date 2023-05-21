@@ -1,44 +1,32 @@
 <?php
 declare(strict_types=1);
 
-
-
 include "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
-// en variabel i php inleds med dollartecken
 $title = "Sign in";
 
+session_start();
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-
-    // print_r2("Metoden post används...");
-
-    // global array $_POST innehåller olika fält som finns i formuläret
-    // print_r2($_POST);
 
     $user_name = trim($_POST['user_name']);
     $user_password = $_POST['user_password'];
 
-    // kontrollera att minst 2 tecken finns i fältet för bird_name
+    // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($user_name) >= 2) {
 
         // spara till databasen
         $sql = "SELECT * FROM `user` WHERE `user_name` = '$user_name'";
-        // $sql = "SELECT * FROM `user` WHERE `user_name` = '" . $user_name . "' AND `user_password` = '" . $user_password . "'";
-
-        // echo($sql);
 
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->query($sql);
             $user = $result->fetch();
-            // var_dump($sql);
-            print_r2($result);
-            print_r2($user);
+            
 
             if (!$user) {
                 $_SESSION['message'] = "Username does not exsists";
-                // echo "username failed";
                 header("location: login.php");
                 exit();
             }
@@ -48,11 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             if (!$correct_password) {
                 $_SESSION['message'] = "Invalid password";
                 header("location: login.php");
-                // echo "password failed";
                 exit();
             }
 
-            header("location: dashboard.php");
+            $_SESSION['user_name'] = $user['user_name'];
+            $_SESSION['user_id'] = $user['user_id'];
+            header("location: explore.php");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage(); 
         }

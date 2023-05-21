@@ -15,21 +15,14 @@ $user_name = "";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    // print_r2("Metoden post används...");
-
-    // global array $_POST innehåller olika fält som finns i formuläret
-    // print_r2($_POST);
-
     $user_name = trim($_POST['user_name']);
     $hashed_user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
-    // kontrollera att minst 2 tecken finns i fältet för bird_name
+    // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($user_name) >= 2) {
 
         // spara till databasen
         $sql = "INSERT INTO `user` (`user_name`, `user_password`) VALUES ('$user_name', '$hashed_user_password')";
-
-        // echo($sql);
 
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
