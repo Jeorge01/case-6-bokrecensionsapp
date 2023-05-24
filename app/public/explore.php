@@ -7,7 +7,7 @@ include "_includes/global-functions.php";
 session_start();
 
 
-$title = "En webbsida med PHP";
+$title = "Explore";
 
 
 $sql = "SELECT * FROM bom";
@@ -32,7 +32,7 @@ $rows = $result->fetchAll();
 <body>
 
 <header>
-    <h2>Explore</h2> 
+    <h2><?= $title ?></h2> 
     <div>usericon</div> 
 </header>
 
@@ -52,7 +52,7 @@ $rows = $result->fetchAll();
 
     <footer>
         <a href="explore.php">Explore</a>
-        <a href="">+</a>
+        <a href="create.php">+</a>
         <a href="my-reviews.php">My reviews</a>
     </footer>
 </body>

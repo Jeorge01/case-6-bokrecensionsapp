@@ -4,8 +4,9 @@ declare(strict_types=1);
 require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
-// setup table user
+// setup table user and table book or movie
 setup_user($pdo);
+setup_bom($pdo);
 
 // en variabel i php inleds med dollartecken
 $title = "Sign up";

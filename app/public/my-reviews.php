@@ -7,7 +7,7 @@ include "_includes/global-functions.php";
 session_start();
 
 
-$title = "En webbsida med PHP";
+$title = "My reviews";
 
 
 $sql = "SELECT * FROM bom WHERE `user_id` = '$_SESSION[user_id]'";
@@ -32,7 +32,7 @@ $rows = $result->fetchAll();
 <body>
 
     <header>
-        <h2>Explore</h2>
+        <h2><?= $title ?></h2>
         <div>usericon</div>
     </header>
 
@@ -42,16 +42,19 @@ $rows = $result->fetchAll();
         foreach ($rows as $row) {
             echo "<div>";
             foreach ($row as $key) {
-                echo $key;
+                echo $key;   
             }
+            $book_id = $row['book_id'];
+            echo "<a href=\"edit.php?book_id=$book_id\">Edit</a>";
             echo "</div>";
+            print_r2($row);
         }
         ?>
     </section>
 
     <footer>
         <a href="explore.php">Explore</a>
-        <a href="">+</a>
+        <a href="create.php">+</a>
         <a href="my-reviews.php">My reviews</a>
     </footer>
 </body>
