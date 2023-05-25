@@ -33,12 +33,18 @@ function setup_user($pdo)
 
 function setup_bom($pdo)
 {
-    $sql = "CREATE TABLE IF NOT EXISTS `db_case`.`bom` 
-    (`book_id` INT NOT NULL AUTO_INCREMENT , `title` VARCHAR(255) 
-    NOT NULL , `author` VARCHAR(255) NOT NULL , `year_published` 
-    YEAR NOT NULL , `review` TEXT NOT NULL , `created_at` 
-    DATETIME NOT NULL , `user_id` INT NOT NULL , PRIMARY KEY 
-    (`book_id`)) ENGINE = InnoDB;";
+    $sql = "CREATE TABLE `bom` (
+        `book_id` int(11) NOT NULL AUTO_INCREMENT,
+        `title` varchar(255) NOT NULL,
+        `author` varchar(255) NOT NULL,
+        `year_published` int(4) NOT NULL,
+        `review` text NOT NULL,
+        `created_at` datetime NOT NULL,
+        `user_id` int(11) NOT NULL,
+        PRIMARY KEY (`book_id`)
+       ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
 
-    $result = $pdo->exec($sql);
+       $result = $pdo->exec($sql);
 }
+
+

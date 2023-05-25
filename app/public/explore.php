@@ -32,10 +32,14 @@ $rows = $result->fetchAll();
 
 <body>
 
-<header>
-    <h2><?= $title ?></h2> 
-    <div>usericon</div> 
-</header>
+    <header>
+        <h2>
+            <?= $title ?>
+        </h2>
+        <div>
+            <?= "<a href=\"edit-profile.php?user_id=$_SESSION[user_id]\">Profile</a>"; ?>
+        </div>
+    </header>
 
     <section>
         <?php

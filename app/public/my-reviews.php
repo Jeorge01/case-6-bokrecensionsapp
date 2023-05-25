@@ -33,8 +33,12 @@ $rows = $result->fetchAll();
 <body>
 
     <header>
-        <h2><?= $title ?></h2>
-        <div>usericon</div>
+        <h2>
+            <?= $title ?>
+        </h2>
+        <div>
+            <?= "<a href=\"edit-profile.php?user_id=$_SESSION[user_id]\">Profile</a>"; ?>
+        </div>
     </header>
 
     <section>
@@ -43,10 +47,10 @@ $rows = $result->fetchAll();
         foreach ($rows as $row) {
             echo "<div>";
             foreach ($row as $key) {
-                echo $key;   
+                echo $key;
             }
             $book_id = $row['book_id'];
-            echo "<a href=\"edit.php?book_id=$book_id\">Edit</a>";
+            echo "<a href=\"edit-review.php?book_id=$book_id\">Edit</a>";
             echo "</div>";
             print_r2($row);
         }

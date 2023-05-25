@@ -115,7 +115,7 @@ echo $login_id_check2;
 <body>
     
 
-    <h2>Create review</h2>
+    <h2><?= $page_title ?></h2>
 
     <?php 
 
@@ -128,7 +128,7 @@ echo $login_id_check2;
         <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255"
             value="<?= $author ?>">
         <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-            minlength="2" maxlength="255" min="0" value="<?= $year_published ?>">
+            minlength="2" maxlength="4" min="0" value="<?= $year_published ?>">
         <textarea name="review" id="review" cols="30" rows="10" required minlength="2"
             maxlength="255"><?= $review ?></textarea>
         <input type="hidden" name="book_id" value="<?= $row['book_id'] ?>">
@@ -143,10 +143,6 @@ echo $login_id_check2;
     ?>
 
     <?php
-
-    if (!$row) {
-        echo "This Book id does not exist!";
-    }
 
     if ($login_id_check1 != $login_id_check2) {
         header("location: my-reviews.php");
