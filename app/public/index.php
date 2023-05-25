@@ -1,7 +1,17 @@
 <?php
+declare(strict_types=1);
+
+include "_includes/database-connection.php";
+include "_includes/global-functions.php";
+
+// setup table user and table book or movie
+setup_user($pdo);
+setup_bom($pdo);
 
 // en variabel i php inleds med dollartecken
 $title = "En webbsida med PHP";
+
+
 
 ?>
 

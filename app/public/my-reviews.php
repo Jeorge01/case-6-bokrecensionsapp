@@ -6,6 +6,7 @@ include "_includes/global-functions.php";
 
 session_start();
 
+echo "$_SESSION[user_id]";
 
 $title = "My reviews";
 

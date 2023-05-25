@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $title = trim($_POST['title']);
     $author = trim($_POST['author']);
-    $year_published = trim($_POST['year_published']);
+    $year_published = $_POST['year_published'];
     $review = trim($_POST['review']);
     $created_at = date("Y-m-d H:i:s");
     
@@ -37,6 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         
     }
 }
+
+
+$year = date("Y");
+// echo "$year";
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -55,19 +61,18 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     <h2>Create review</h2>
 
+    
+
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255">
         <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255">
         <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-            minlength="2" maxlength="255" min="0">
-        <textarea name="review" id="review" cols="30" rows="10" required minlength="2" maxlength="255"></textarea>
+            minlength="2" maxlength="4" min="0">
+        <textarea name="review" id="review" cols="30" rows="5" required minlength="2" maxlength="255"></textarea>
         <input type="submit" value="Spara">
     </form>
 
-    <?php
-    $year = date("Y-m-d");
-    echo "$year";
-    ?>
+    
 </body>
 
 </html>

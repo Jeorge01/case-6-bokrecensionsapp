@@ -7,17 +7,24 @@ include "_includes/global-functions.php";
 session_start();
 
 
+
 $page_title = "Edit review";
+
 $title = "";
 $author = "";
 $year_published = "";
 $review = "";
 
 
+
+
+
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     print_r2($_POST);
 
+    $user_id = $_POST['user_id'];
     $title = trim($_POST['title']);
     $author = trim($_POST['author']);
     $year_published = trim($_POST['year_published']);
@@ -60,6 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 }
 
+
+
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
 
     $book_id = isset($_GET['book_id']) ? $_GET['book_id'] : 0;
@@ -80,10 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     }
 }
 
+$login_id_check1 = $row['user_id'];
+$login_id_check2 = $_SESSION['user_id'];
 
+echo $login_id_check1;
+echo $login_id_check2;
 
+// echo "$_SESSION[user_id]";
 
-
+// echo "$row[user_id]";
 ?>
 
 <!DOCTYPE html>
@@ -99,13 +113,14 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
 </head>
 
 <body>
+    
 
     <h2>Create review</h2>
 
     <?php 
 
-    if ($row) {
-
+    if ($login_id_check1 === $login_id_check2) {
+        // ($row['user_id'] = $_session['user_id'])
     ?>
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255"
@@ -133,11 +148,11 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
         echo "This Book id does not exist!";
     }
 
-    ?>
+    if ($login_id_check1 != $login_id_check2) {
+        header("location: my-reviews.php");
+        echo "Touch some grass instead";
+    }
 
-    <?php
-    $year = date("Y-m-d");
-    echo "$year";
     ?>
 </body>
 
