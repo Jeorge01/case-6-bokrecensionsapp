@@ -43,14 +43,36 @@ $rows = $result->fetchAll();
 
     <section>
         <?php
-        echo $_SESSION['user_name'];
-        echo $_SESSION['user_id'];
+        // echo $_SESSION['user_name'];
+        // echo $_SESSION['user_id'];
         foreach ($rows as $row) {
-            echo "<div>";
-            foreach ($row as $key) {
-                echo $key;
-            }
-            echo "</div>";
+            $book_id = $row['book_id'];
+            
+            echo '<div class="card">
+
+                <div class="img_container">
+                    <img src="' . $row['img_url'] . '">
+                </div>
+
+                <div class="info_container">
+
+                    <div class="title_container">
+                    <h3>' . $row['title'] . '<h3>
+                    </div>
+
+                    <div class="review_container">
+                    <p>' . $row['review'] . '</p>
+                    </div>
+
+                    <div class="author_and_year_container">
+                    <p>By ' . $row['author'] . ' and published year ' . $row['year_published'] . '</p>
+                    </div>
+
+                    <p class="review_created_at_text">Review created at: ' . $row['created_at'] . '<P>
+
+                </div>
+
+            </div>';
         }
         ?>
     </section>

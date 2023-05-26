@@ -13,7 +13,7 @@ try {
     // set the PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    echo "Connected successfully";
+    // echo "Connected successfully";
 } catch (PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
@@ -33,8 +33,9 @@ function setup_user($pdo)
 
 function setup_bom($pdo)
 {
-    $sql = "CREATE TABLE `bom` (
+    $sql = "CREATE TABLE IF NOT EXISTS `bom` (
         `book_id` int(11) NOT NULL AUTO_INCREMENT,
+        `img_url` text NOT NULL,
         `title` varchar(255) NOT NULL,
         `author` varchar(255) NOT NULL,
         `year_published` int(4) NOT NULL,
@@ -42,7 +43,7 @@ function setup_bom($pdo)
         `created_at` datetime NOT NULL,
         `user_id` int(11) NOT NULL,
         PRIMARY KEY (`book_id`)
-       ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
+       ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
 
        $result = $pdo->exec($sql);
 }

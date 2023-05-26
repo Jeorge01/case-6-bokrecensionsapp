@@ -10,6 +10,7 @@ session_start();
 
 $page_title = "Edit review";
 
+$img_url = "";
 $title = "";
 $author = "";
 $year_published = "";
@@ -25,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     print_r2($_POST);
 
     $user_id = $_POST['user_id'];
+    $img_url = trim($_POST['img_url']);
     $title = trim($_POST['title']);
     $author = trim($_POST['author']);
     $year_published = trim($_POST['year_published']);
@@ -48,12 +50,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     }
 
 
+    if ($img_url === "") {
+        $img_url = "https://source.unsplash.com/random/?bookcover";
+    }
 
     // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($title) >= 2) {
 
         // spara till databasen
-        $sql = "UPDATE `bom` SET `title` = 'kalles', `author` = '$author', `year_published` = '$year_published', `review` = '$review' WHERE `bom`.`book_id` = $book_id";
+        $sql = "UPDATE `bom` SET `img_url` = '$img_url', `title` = '$title', `author` = '$author', `year_published` = '$year_published', `review` = '$review' WHERE `bom`.`book_id` = $book_id";
 
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
@@ -80,8 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     $row = $result->fetch();
 
     if ($row) {
-        // print_r2($row);
-        // print_r2($book_id);
+        $img_url = $row['img_url']; 
         $title = $row['title'];
         $author = $row['author'];
         $year_published = $row['year_published'];
@@ -89,11 +93,13 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     }
 }
 
+
+
 $login_id_check1 = $row['user_id'];
 $login_id_check2 = $_SESSION['user_id'];
 
-echo $login_id_check1;
-echo $login_id_check2;
+// echo $login_id_check1;
+// echo $login_id_check2;
 
 // echo "$_SESSION[user_id]";
 
@@ -127,6 +133,7 @@ echo $login_id_check2;
             value="<?= $title ?>">
         <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255"
             value="<?= $author ?>">
+        <input type="text" name="img_url" id="img_url" placeholder="Image URL" value="<?= $img_url ?>">
         <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
             minlength="2" maxlength="4" min="0" value="<?= $year_published ?>">
         <textarea name="review" id="review" cols="30" rows="10" required minlength="2"
@@ -134,8 +141,6 @@ echo $login_id_check2;
         <input type="hidden" name="book_id" value="<?= $row['book_id'] ?>">
         <input type="submit" value="Spara ändringar">
         <input type="submit" value="Radera" name="delete">
-
-        <a href=""></a>
     </form>
 
     <?php 

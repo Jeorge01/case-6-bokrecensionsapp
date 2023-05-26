@@ -19,8 +19,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $user_name = trim($_POST['user_name']);
     $hashed_user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
+    // if ($user_name === "Lasse" || "lasse") {
+    //     echo "Men hur ska Lasse logga in?";
+    //     exit();
+    // }
+
+
     // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($user_name) >= 2) {
+
+        
 
         // spara till databasen
         $sql = "INSERT INTO `user` (`user_name`, `user_password`) VALUES ('$user_name', '$hashed_user_password')";
@@ -51,10 +59,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 </head>
 <body>
 
-    <?php
-    include "_includes/header.php";
-    ?>
-
     <a href="index.php"><</a>
 
 
@@ -67,9 +71,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <button type="submit">Sign up</button>
     </form>
 
-    <?php
-    include "_includes/footer.php";
-    ?>
 
 </body>
 </html>

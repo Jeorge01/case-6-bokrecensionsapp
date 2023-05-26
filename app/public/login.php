@@ -66,10 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 <body>
 
-    <?php
-    include "_includes/header.php";
-    ?>
-
     <a href="index.php">back</a>
 
     <h1>
@@ -81,10 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         <input type="password" name="user_password" id="user_password" placeholder="Password" required minlength="2" maxlength="255">
         <button type="submit">Sign in</button>
     </form>
-
-    <?php
-    include "_includes/footer.php";
-    ?>
 
 </body>
 
