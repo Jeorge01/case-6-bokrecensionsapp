@@ -16,12 +16,80 @@ $color3: #ffffff;
 
 body {
     background-color: $color2;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+p {
+    font-family: 'Satoshi', sans-serif;
+}
+
+header {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color3;
+    height: 100px;
+    box-shadow: 0px -4px 97px -19px rgba(0, 0, 0, 0.25);
+    padding: 0 10%;
+
+    h2 {
+        color: $color1;
+        font-family: 'Rammetto One', cursive;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 30px;
+        line-height: 24px;
+        // padding-left: 100px;
+    }
+
+    a {
+        // padding-right: 60%;
+        text-decoration: none;
+        color: $color1;
+    }
+
+    ion-icon {
+        font-size: 44px;
+        color: $color1;
+    }
+}
+
+footer {
+    z-index: 1;
+    height: 60px;
+    background-color: $color3;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    margin-top: auto;
+    box-shadow: 0px -4px 97px -19px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10%;
+
+
+    ion-icon {
+        font-size: 34px;
+        color: $color1;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color1;
+    }
 }
 
 .log_reg_container {
-    padding: 2rem;
 
     h1 {
         color: $color1;
@@ -50,61 +118,195 @@ a {
     height: 100%;
 
     .log_form_container {
-        
+
         height: 100%;
         background-color: $color3;
         border-radius: 30px 30px 0 0;
         display: flex;
         justify-content: center;
         // margin-top: 50px;
-        
-    
-    
-     form {
-        height: 100%;
-        width: 95%;
-        display: flex;
-        
-        flex-direction: column;
-        input {
-            border: none;
-            background-color: $color2;
-            border-radius: 1rem;
-            margin-top: 24px;
-            width: 100%;
-            height: 65px;
-            padding-left: 1rem;
-            outline: none;
-            
-    
-    
-        }
-    
-        button {
-            border: none;
-            background-color: $color1;
-            color: $color3;
-            border-radius: 1rem;
-            margin-top: 24px;
-            width: 100%;
-            height: 65px;
-            font-weight: 700;
-            font-size: 32px;
-            line-height: 24px;
-        }
-    
-        .log_reg {
+
+
+
+        form {
+            height: 100%;
+            width: 95%;
             display: flex;
-            justify-content: right;
-            a {
-                text-decoration: none;
-                color: $color1;
-                margin-top: 10px;
-                margin-right: 10px;
+
+            flex-direction: column;
+
+            input {
+                border: none;
+                background-color: $color2;
+                border-radius: 1rem;
+                margin-top: 24px;
+                width: 100%;
+                height: 65px;
+                padding-left: 1rem;
+                outline: none;
+
+
+
+            }
+
+            button {
+                border: none;
+                background-color: $color1;
+                color: $color3;
+                border-radius: 1rem;
+                margin-top: 24px;
+                width: 100%;
+                height: 65px;
+                font-weight: 700;
+                font-size: 32px;
+                line-height: 24px;
+            }
+
+            .log_reg {
+                display: flex;
+                justify-content: right;
+
+                a {
+                    text-decoration: none;
+                    color: $color1;
+                    margin-top: 10px;
+                    margin-right: 10px;
+                }
             }
         }
-     }
-        
-        
+
+
     }
+}
+
+
+
+section {
+    margin: 6rem 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 5%;
+
+    .card {
+        width: 100%;
+        margin-top: 2rem;
+
+
+        overflow: hidden;
+        background-color: $color3;
+        box-shadow: 0px 0px 25px -4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+
+        .img_container {
+            position: relative;
+
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: 200px;
+                // height: auto;
+                // max-height: 300px;
+            }
+
+            a {
+                position: absolute;
+                
+                top: 12px;
+                left: 12px;
+                text-decoration: none;
+                background-color: $color3;
+                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+                color: black;
+                padding: 10px 20px;
+                border-radius: 20px;
+            }
+        }
+        
+
+        .info_container {
+            position: relative;
+            padding: 5px 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            .title_container {
+                margin-top: 3px;
+                margin-bottom: 5px;
+                width: 210px;
+
+                h3 {
+                    font-family: 'Rammetto One';
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 15px;
+                    // line-height: 68px;
+                    /* or 338% */
+
+                    text-align: left;
+                    letter-spacing: -0.25px;
+                }
+            }
+
+            .review_container {
+                padding: 10px 0;
+
+                p {
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 15px;
+                }
+            }
+
+            .author_and_year_container {
+                margin-top: 20px;
+                margin-bottom: 10px;
+
+                p {
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 15px;
+                }
+
+            }
+
+            p.review_created_at_text {
+                position: absolute;
+
+                top: 5px;
+                right: 20px;
+
+                font-family: 'Satoshi';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 15px;
+                /* or 125% */
+
+                letter-spacing: -0.25px;
+
+            }
+
+            p.review_created_at_text2 {
+                position: absolute;
+
+                top: 20px;
+                right: 30px;
+
+                font-family: 'Satoshi';
+                font-style: normal;
+                font-weight: 300;
+                font-size: 12px;
+                line-height: 15px;
+                /* or 125% */
+
+                letter-spacing: -0.25px;
+
+            }
+        }
+    }
+
 }

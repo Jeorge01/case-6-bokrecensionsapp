@@ -6,7 +6,7 @@ include "_includes/global-functions.php";
 
 session_start();
 
-echo "$_SESSION[user_id]";
+// echo "$_SESSION[user_id]";
 
 $title = "Explore";
 
@@ -38,7 +38,7 @@ $rows = $result->fetchAll();
             <?= $title ?>
         </h2>
         <div>
-            <?= "<a href=\"edit-profile.php?user_id=$_SESSION[user_id]\">Profile</a>"; ?>
+            <?= "<a href=\"edit-profile.php?user_id=$_SESSION[user_id]\"><ion-icon name=\"person-circle-outline\"></ion-icon></a>"; ?>
         </div>
     </header>
 
@@ -48,7 +48,7 @@ $rows = $result->fetchAll();
         // echo $_SESSION['user_id'];
         foreach ($rows as $row) {
             $book_id = $row['book_id'];
-            
+
             echo '<div class="card">
 
                 <div class="img_container">
@@ -69,7 +69,8 @@ $rows = $result->fetchAll();
                     <p>By ' . $row['author'] . ' and published year ' . $row['year_published'] . '</p>
                     </div>
 
-                    <p class="review_created_at_text">Review created at: ' . $row['created_at'] . '<P>
+                    <p class="review_created_at_text">Review created at: <P>
+                    <p class="review_created_at_text2">' . substr($row['created_at'], 0, -9) . '</p>
 
                 </div>
 
@@ -80,9 +81,11 @@ $rows = $result->fetchAll();
 
     <footer>
         <a href="explore.php">Explore</a>
-        <a href="create.php">+</a>
+        <a href="create.php"><ion-icon name="add-circle-outline"></ion-icon></a>
         <a href="my-reviews.php">My reviews</a>
     </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

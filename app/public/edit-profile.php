@@ -81,13 +81,15 @@ $login_id_check2 = $_SESSION['user_id'];
 
         <h3>Username</h3> <input type="text" name="user_name" id="user_name" placeholder="New username"
             value="<?= $_SESSION['user_name'] ?>">
-        <h3>Password</h3> <input type="password" name="user_password" id="user_password" placeholder="New password" value="">
+        <h3>Password</h3> <input type="password" name="user_password" id="user_password" placeholder="New password"
+            value="">
     </form>
 
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-
-        <a href="login.php">Sign out</a>
-        <a href="">Delete user</a>
+        <div class="sign_out_delete_container">
+            <a href="login.php">Sign out</a>
+            <a href="">Delete user</a>
+        </div>
     </form>
 
     <?php
