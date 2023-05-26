@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->query($sql);
             $user = $result->fetch();
-            
+
 
             if (!$user) {
                 $_SESSION['message'] = "Username does not exsists";
@@ -43,9 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['user_id'] = $user['user_id'];
             header("location: explore.php");
         } catch (PDOException $error) {
-            echo "There was a problem " . $error->getMessage(); 
+            echo "There was a problem " . $error->getMessage();
         }
-        
+
     }
 }
 
@@ -61,22 +61,33 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     <title>
         <?php echo $title; ?>
     </title>
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <a href="index.php">back</a>
+    <!-- <a href="index.php">back</a> -->
+    <div class="start_container">
+        <div class="log_reg_container">
+            <h1>
+                <?= $title ?>
+            </h1>
+        </div>
 
-    <h1>
-        <?= $title ?>
-    </h1>
-
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <input type="text" name="user_name" id="user_name" placeholder="Username" required minlength="2" maxlength="25">
-        <input type="password" name="user_password" id="user_password" placeholder="Password" required minlength="2" maxlength="255">
-        <button type="submit">Sign in</button>
-    </form>
+        <div class="log_form_container">
+            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                <input type="text" name="user_name" id="user_name" placeholder="Username" required minlength="2"
+                    maxlength="25">
+                <input type="password" name="user_password" id="user_password" placeholder="Password" required
+                    minlength="2" maxlength="255">
+                <button type="submit">Sign in</button>
+                <div class="log_reg">
+                    <a href="register.php">Sign up</a>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </body>
 

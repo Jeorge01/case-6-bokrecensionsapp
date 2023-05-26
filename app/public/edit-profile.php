@@ -59,6 +59,7 @@ $login_id_check2 = $_SESSION['user_id'];
     <title>
         <?= $page_title ?>
     </title>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>

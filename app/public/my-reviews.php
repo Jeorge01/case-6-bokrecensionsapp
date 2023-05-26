@@ -37,6 +37,7 @@ $rows = $result->fetchAll();
     <title>
         <?= $page_title ?>
     </title>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
@@ -50,13 +51,13 @@ $rows = $result->fetchAll();
         </div>
     </header>
 
-    
+
     <section>
         <?php
-       
+
         foreach ($rows as $row) {
             $book_id = $row['book_id'];
-            
+
             echo '<div class="card">
 
                 <div class="img_container">
@@ -84,7 +85,7 @@ $rows = $result->fetchAll();
 
             </div>';
         }
-        
+
         ?>
     </section>
 

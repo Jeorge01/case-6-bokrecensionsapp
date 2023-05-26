@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #EEF0FE;
+  height: 100vh;
+  width: 100%;
+}
+
+.log_reg_container {
+  padding: 2rem;
+}
+.log_reg_container h1 {
+  color: #526AFF;
+  font-family: "Rammetto One", cursive;
+  font-weight: 400;
+  font-size: 64px;
+  text-align: center;
+  letter-spacing: -0.25px;
+}
+
+input,
+button,
+a {
+  font-family: "Satoshi", sans-serif;
+}
+
+.start_container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.start_container .log_form_container {
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 30px 30px 0 0;
+  display: flex;
+  justify-content: center;
+}
+.start_container .log_form_container form {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+.start_container .log_form_container form input {
+  border: none;
+  background-color: #EEF0FE;
+  border-radius: 1rem;
+  margin-top: 24px;
+  width: 100%;
+  height: 65px;
+  padding-left: 1rem;
+  outline: none;
+}
+.start_container .log_form_container form button {
+  border: none;
+  background-color: #526AFF;
+  color: #ffffff;
+  border-radius: 1rem;
+  margin-top: 24px;
+  width: 100%;
+  height: 65px;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 24px;
+}
+.start_container .log_form_container form .log_reg {
+  display: flex;
+  justify-content: right;
+}
+.start_container .log_form_container form .log_reg a {
+  text-decoration: none;
+  color: #526AFF;
+  margin-top: 10px;
+  margin-right: 10px;
+}/*# sourceMappingURL=main.css.map */

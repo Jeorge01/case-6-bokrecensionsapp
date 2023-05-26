@@ -58,6 +58,7 @@ $year = date("Y");
     <title>
         <?= $title ?>
     </title>
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
 <body>
