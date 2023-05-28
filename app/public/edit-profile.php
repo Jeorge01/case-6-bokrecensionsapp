@@ -28,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->exec($sql);
-            echo "Shit asså";
-            echo "$sql";
-            // header("location: my-reviews.php");
+            echo "Password as been changed";
+            
+            header("location: edit-profile.php");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }
@@ -78,7 +78,7 @@ $login_id_check2 = $_SESSION['user_id'];
         // ($row['user_id'] = $_session['user_id'])
         ?>
 
-        <div id="edit_profile_container">
+        <div class="edit_profile_container">
             <div>
                 <h3>Username</h3> <input type="text" name="user_name" id="user_name" placeholder="New username"
                     value="<?= $_SESSION['user_name'] ?>">

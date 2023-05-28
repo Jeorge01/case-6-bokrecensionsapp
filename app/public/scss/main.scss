@@ -145,13 +145,12 @@ a {
         border-radius: 30px 30px 0 0;
         display: flex;
         justify-content: center;
-        // margin-top: 50px;
 
 
 
         form {
             height: 100%;
-            width: 95%;
+            width: 90%;
             display: flex;
 
             flex-direction: column;
@@ -345,7 +344,7 @@ section {
 
 }
 
-#edit_profile_container {
+.edit_profile_container {
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
@@ -364,7 +363,7 @@ section {
             position: absolute;
             font-style: normal;
             font-weight: 500;
-            font-size: 20px;
+            font-size: 1rem;
             line-height: 24px;
         }
 
@@ -388,7 +387,7 @@ section {
     position: fixed;
     width: 100%;
     bottom: 0;
-    padding: 0 4rem;
+    padding: 0 3rem;
     margin-bottom: 1rem;
 
     .log_out_button {
@@ -408,60 +407,79 @@ section {
     }
 }
 
-.create_form {
+.create_edit_form {
+    // background-color: black;
     margin-top: 4rem;
     display: flex;
     justify-content: center;
     width: 100%;
-
-    div {
-        margin-top: 1.5rem;
-
-        h3 {
-            font-family: 'Satoshi';
-            font-style: normal;
-            font-weight: 500;
-            font-size: 20px;
-            line-height: 24px;
-            /* identical to box height, or 120% */
-
-
-            letter-spacing: -0.25px;
-            margin-left: 0.5rem;
+    
+    form {
+        div {
+            margin-top: 1.5rem;
+    
+            h3 {
+                font-family: 'Satoshi';
+                font-style: normal;
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 24px;
+                /* identical to box height, or 120% */
+    
+    
+                letter-spacing: -0.25px;
+                margin-left: 0.5rem;
+            }
+    
+            input {
+                width: 100%;
+                height: 65px;
+                border-radius: 1rem;
+                outline: none;
+                border: none;
+                padding: 0 1rem;
+                margin-top: 5px;
+            }
+    
+            textarea {
+                font-family: 'Satoshi';
+                resize: none;
+                width: 100%;
+                height: 8rem;
+                border-radius: 1rem;
+                outline: none;
+                border: none;
+                padding: 1rem;
+                margin-top: 5px;
+            }
+    
+            input[type="submit"] {
+                background-color: $color1;
+                color: $color3;
+                font-style: normal;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 24px;
+                margin-bottom: 1.5rem;
+            }
         }
 
-        input {
-            width: 100%;
-            height: 65px;
-            border-radius: 1rem;
-            outline: none;
-            border: none;
-            padding: 0 1rem;
-            margin-top: 5px;
+        div.remove_review_container {
+            display: flex;
+            justify-content: center;
+            input {
+                margin-top: 0;
+                width: 80px;
+                height: 24px;
+                color: red;
+                border-radius: 0;
+                background-color: transparent;
+                
+            }
         }
-
-        textarea {
-            font-family: 'Satoshi';
-            resize: none;
-            width: 100%;
-            height: 8rem;
-            border-radius: 1rem;
-            outline: none;
-            border: none;
-            padding: 1rem;
-            margin-top: 5px;
-        }
-
-        input[type="submit"] {
-            background-color: $color1;
-            color: $color3;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 24px;
-            margin-bottom: 1.5rem;
-        }
+    
     }
 
+    
 
 }

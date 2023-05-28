@@ -70,7 +70,7 @@ $year = date("Y");
     </header>
 
 
-    <div class="create_form">
+    <div class="create_edit_form">
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
             <div>
                 <h3>Title</h3>
@@ -96,7 +96,7 @@ $year = date("Y");
                     maxlength="400"></textarea>
             </div>
             <div>
-                <input type="submit" value="Save">
+                <input type="submit" value="Create">
             </div>
         </form>
     </div>

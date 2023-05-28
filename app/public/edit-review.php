@@ -85,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === "GET") {
     $row = $result->fetch();
 
     if ($row) {
-        $img_url = $row['img_url']; 
+        $img_url = $row['img_url'];
         $title = $row['title'];
         $author = $row['author'];
         $year_published = $row['year_published'];
@@ -120,31 +120,60 @@ $login_id_check2 = $_SESSION['user_id'];
 </head>
 
 <body>
-    
 
-    <h2><?= $page_title ?></h2>
+    <header>
+        <a href="my-reviews.php"><ion-icon name="chevron-back"></ion-icon></a>
+        <h2>
+            <?= $page_title ?>
+        </h2>
+        <div></div>
+    </header>
 
-    <?php 
+    <?php
 
     if ($login_id_check1 === $login_id_check2) {
         // ($row['user_id'] = $_session['user_id'])
-    ?>
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255"
-            value="<?= $title ?>">
-        <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255"
-            value="<?= $author ?>">
-        <input type="text" name="img_url" id="img_url" placeholder="Image URL" value="<?= $img_url ?>">
-        <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-            minlength="2" maxlength="4" min="0" value="<?= $year_published ?>">
-        <textarea name="review" id="review" cols="30" rows="10" required minlength="2"
-            maxlength="255"><?= $review ?></textarea>
-        <input type="hidden" name="book_id" value="<?= $row['book_id'] ?>">
-        <input type="submit" value="Spara ändringar">
-        <input type="submit" value="Radera" name="delete">
-    </form>
+        ?>
+        <div class="create_edit_form">
+            <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                <div>
+                    <h3>Title</h3>
+                    <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255"
+                        value="<?= $title ?>">
+                </div>
+                <div>
+                    <h3>Author</h3>
+                    <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255"
+                        value="<?= $author ?>">
+                </div>
+                <div>
+                    <h3>Image URL</h3>
+                    <input type="text" name="img_url" id="img_url" placeholder="Image URL" value="<?= $img_url ?>">
+                </div>
+                <div>
+                    <h3>Publicaation year</h3>
+                    <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
+                        minlength="2" maxlength="4" min="0" value="<?= $year_published ?>">
+                </div>
+                <div>
+                    <h3>Review</h3>
+                    <textarea name="review" id="review" cols="30" rows="10" required minlength="2"
+                        maxlength="255"><?= $review ?></textarea>
+                </div>
 
-    <?php 
+                <input type="hidden" name="book_id" value="<?= $row['book_id'] ?>">
+
+
+                <div>
+                    <input type="submit" value="Spara ändringar">
+                </div>
+                <div class="remove_review_container">
+                    <input type="submit" value="Radera" name="delete">
+                </div>
+            </form>
+        </div>
+
+        <?php
     }
     ?>
 
@@ -156,6 +185,8 @@ $login_id_check2 = $_SESSION['user_id'];
     }
 
     ?>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
