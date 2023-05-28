@@ -66,10 +66,10 @@ $login_id_check2 = $_SESSION['user_id'];
 
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <header>
-            <a href="my-reviews.php">cancel</a>
-            <h2>
+            <a href="my-reviews.php"><ion-icon name="chevron-back"></ion-icon></a>
+            <h3>
                 <?= $page_title ?>
-            </h2>
+            </h3>
             <input type="submit" value="Apply">
         </header>
         <?php
@@ -78,17 +78,22 @@ $login_id_check2 = $_SESSION['user_id'];
         // ($row['user_id'] = $_session['user_id'])
         ?>
 
-
-        <h3>Username</h3> <input type="text" name="user_name" id="user_name" placeholder="New username"
-            value="<?= $_SESSION['user_name'] ?>">
-        <h3>Password</h3> <input type="password" name="user_password" id="user_password" placeholder="New password"
-            value="">
+        <div id="edit_profile_container">
+            <div>
+                <h3>Username</h3> <input type="text" name="user_name" id="user_name" placeholder="New username"
+                    value="<?= $_SESSION['user_name'] ?>">
+            </div>
+            <div>
+                <h3>Password</h3> <input type="password" name="user_password" id="user_password"
+                    placeholder="New password" value="">
+            </div>
+        </div>
     </form>
 
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="sign_out_delete_container">
-            <a href="login.php">Sign out</a>
-            <a href="">Delete user</a>
+            <a class="log_out_button" href="login.php">Sign out</a>
+            <a class="delete_user_button" href="">Delete user</a>
         </div>
     </form>
 
@@ -104,6 +109,8 @@ $login_id_check2 = $_SESSION['user_id'];
     // }
     
     ?>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

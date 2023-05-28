@@ -43,6 +43,7 @@ $rows = $result->fetchAll();
 <body>
 
     <header>
+        <div></div>
         <h2>
             <?= $page_title ?>
         </h2>
@@ -76,12 +77,19 @@ $rows = $result->fetchAll();
                     <p>' . $row['review'] . '</p>
                     </div>
 
-                    <div class="author_and_year_container">
-                    <p>By ' . $row['author'] . ' and published year ' . $row['year_published'] . '</p>
+                    <div class="author_container">
+                    <p>Author: ' . $row['author'] . '</p>
                     </div>
 
-                    <p class="review_created_at_text">Review created at: <P>
-                    <p class="review_created_at_text2">' . substr($row['created_at'], 0, -9) . '</p>
+                    <div class="year_container">
+                    <p>Publication year: ' . $row['year_published'] . '</p>
+                    </div>
+
+                    <div class="user_name_container">
+                    <p>Review created by ' . "kalle" . '</p>
+                    </div>
+
+                    <p class="review_created_at_text">' . substr($row['created_at'], 0, -9) . '</p>
                 </div>
 
             </div>';

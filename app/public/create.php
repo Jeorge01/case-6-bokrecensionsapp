@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $year_published = $_POST['year_published'];
     $review = trim($_POST['review']);
     $created_at = date("Y-m-d H:i:s");
-    
+
     if ($img_url === "") {
         $img_url = "https://source.unsplash.com/random/?bookcover";
     }
@@ -35,16 +35,16 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             header("location: my-reviews.php");
         } catch (PDOException $error) {
-            echo "There was a problem " . $error->getMessage(); 
+            echo "There was a problem " . $error->getMessage();
         }
-        
+
     }
 }
 
 
 $year = date("Y");
 // echo "$year";
-    
+
 
 ?>
 
@@ -63,21 +63,47 @@ $year = date("Y");
 
 <body>
 
-    <h2>Create review</h2>
+    <header>
+        <a href="my-reviews.php"><ion-icon name="close"></ion-icon></a>
+        <h2>Create review</h2>
+        <div></div>
+    </header>
 
-    
 
-    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-        <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255">
-        <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255">
-        <input type="text" name="img_url" id="img_url" placeholder="Image URL" value="">
-        <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-            minlength="2" maxlength="4" min="0">
-        <textarea name="review" id="review" cols="30" rows="5" required minlength="2" maxlength="255"></textarea>
-        <input type="submit" value="Spara">
-    </form>
+    <div class="create_form">
+        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+            <div>
+                <h3>Title</h3>
+                <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255">
+            </div>
+            <div>
+                <h3>Author</h3>
+                <input type="text" name="author" id="author" placeholder="Author" required minlength="2"
+                    maxlength="255">
+            </div>
+            <div>
+                <h3>Image URL</h3>
+                <input type="text" name="img_url" id="img_url" placeholder="Image URL" value="">
+            </div>
+            <div>
+                <h3>Publication year</h3>
+                <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
+                    minlength="2" maxlength="4" min="0">
+            </div>
+            <div>
+                <h3>Your review</h3>
+                <textarea name="review" id="review" cols="40" rows="50" placeholder="Review" required minlength="2"
+                    maxlength="400"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Save">
+            </div>
+        </form>
+    </div>
 
-    
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>
