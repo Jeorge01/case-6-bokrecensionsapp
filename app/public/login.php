@@ -4,6 +4,9 @@ declare(strict_types=1);
 include "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
+setup_user($pdo);
+setup_bom($pdo);
+
 $title = "Sign in";
 
 session_start();

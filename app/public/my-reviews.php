@@ -87,7 +87,7 @@ $rows = $result->fetchAll();
                     </div>
 
                     <div class="user_name_container">
-                    <p>Review created by ' . "kalle" . '</p>
+                    <p>Review created by ' . $row['user_name'] . '</p>
                     </div>
 
                     <p class="review_created_at_text">' . substr($row['created_at'], 0, -9) . '</p>

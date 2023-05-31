@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $year_published = $_POST['year_published'];
     $review = trim($_POST['review']);
     $created_at = date("Y-m-d H:i:s");
+    $user_name = $_SESSION['user_name'];
 
     if ($img_url === "") {
         $img_url = "https://source.unsplash.com/random/?bookcover";
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if (strlen($title) >= 2) {
 
         // spara till databasen
-        $sql = "INSERT INTO `bom` (`book_id`, `img_url`, `title`, `author`, `year_published`, `review`, `created_at`, `user_id`) VALUES (NULL, '$img_url', '$title', '$author', '$year_published', '$review', '$created_at', '$_SESSION[user_id]')";
+        $sql = "INSERT INTO `bom` (`book_id`, `img_url`, `title`, `author`, `year_published`, `review`, `created_at`, `user_id`, `user_name`) VALUES (NULL, '$img_url', '$title', '$author', '$year_published', '$review', '$created_at', '$_SESSION[user_id]', '$_SESSION[user_name]')";
 
         try {
             // använd databaskopplingen för att spara till tabellen i databasen

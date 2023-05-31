@@ -42,6 +42,7 @@ function setup_bom($pdo)
         `review` text NOT NULL,
         `created_at` datetime NOT NULL,
         `user_id` int(11) NOT NULL,
+        `user_name` VARCHAR(25) NOT NULL,
         PRIMARY KEY (`book_id`)
        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci";
 
