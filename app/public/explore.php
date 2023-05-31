@@ -29,6 +29,7 @@ $rows = $result->fetchAll();
         <?= $title ?>
     </title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,300&display=swap" rel="stylesheet">
 </head>
 
 <body>

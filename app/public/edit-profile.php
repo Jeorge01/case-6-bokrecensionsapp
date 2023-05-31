@@ -17,10 +17,11 @@ $page_title = "Edit profile";
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $user_name = trim($_POST['user_name']);
+    $user_password = trim($_POST['user_password']);
     $hashed_user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
     // kontrollera att minst 2 tecken finns i fältet för username
-    if (strlen($user_name) >= 2) {
+    if (strlen($user_name) >= 2 && strlen($user_password) >= 2) {
 
         // spara till databasen
         $sql = "UPDATE `user` SET `user_name` = '$user_name', `user_password` = '$hashed_user_password' WHERE `user_id` = $_SESSION[user_id]";
@@ -28,7 +29,40 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         try {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->exec($sql);
-            echo "Password as been changed";
+            echo "Username and password has been changed!";
+            
+            $_SESSION['user_name'] = $user_name;
+            header("location: edit-profile.php");
+        } catch (PDOException $error) {
+            echo "There was a problem " . $error->getMessage();
+        }
+
+    }
+
+    else if (strlen($user_name) >= 2 && strlen($user_password) < 2) {
+
+        $sql = "UPDATE `user` SET `user_name` = '$user_name' WHERE `user_id` = $_SESSION[user_id]";
+
+        try {
+            // använd databaskopplingen för att spara till tabellen i databasen
+            $result = $pdo->exec($sql);
+            echo "Username has been changed!";
+            
+            $_SESSION['user_name'] = $user_name;
+            header("location: edit-profile.php");
+        } catch (PDOException $error) {
+            echo "There was a problem " . $error->getMessage();
+        }
+    }
+
+    else if (strlen($user_name) < 2 && strlen($user_password) >= 2) {
+
+        $sql = "UPDATE `user` SET `user_password` = '$hashed_user_password' WHERE `user_id` = $_SESSION[user_id]";
+
+        try {
+            // använd databaskopplingen för att spara till tabellen i databasen
+            $result = $pdo->exec($sql);
+            echo "Password has been changed!";
             
             header("location: edit-profile.php");
         } catch (PDOException $error) {
@@ -60,6 +94,7 @@ $login_id_check2 = $_SESSION['user_id'];
         <?= $page_title ?>
     </title>
     <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@700,500,300&display=swap" rel="stylesheet">
 </head>
 
 <body>
