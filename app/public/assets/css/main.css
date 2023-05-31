@@ -30,6 +30,21 @@ header {
   box-shadow: 0px -4px 97px -19px rgba(0, 0, 0, 0.25);
   padding: 0 10%;
 }
+@media screen and (min-width: 768px) {
+  header {
+    padding: 0 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  header {
+    padding: 0 20%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  header {
+    padding: 0 30%;
+  }
+}
 header h2 {
   color: #526AFF;
   font-family: "Rammetto One", cursive;
@@ -76,6 +91,21 @@ footer {
   align-items: center;
   padding: 0 10%;
 }
+@media screen and (min-width: 768px) {
+  footer {
+    padding: 0 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  footer {
+    padding: 0 20%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  footer {
+    padding: 0 30%;
+  }
+}
 footer ion-icon {
   font-size: 34px;
   color: #526AFF;
@@ -104,6 +134,24 @@ a {
   position: fixed;
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+@media screen and (min-width: 768px) {
+  .start_container {
+    padding: 0 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .start_container {
+    padding: 0 20%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .start_container {
+    padding: 0 30%;
+  }
 }
 .start_container .log_form_container {
   height: 100%;
@@ -158,6 +206,21 @@ section {
   flex-direction: column;
   padding: 0 5%;
 }
+@media screen and (min-width: 768px) {
+  section {
+    padding: 0 10%;
+  }
+}
+@media screen and (min-width: 992px) {
+  section {
+    padding: 0 20%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  section {
+    padding: 0 30%;
+  }
+}
 section .card {
   width: 100%;
   margin-top: 2rem;
@@ -172,7 +235,7 @@ section .card .img_container {
 section .card .img_container img {
   object-fit: cover;
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 section .card .img_container a {
   position: absolute;
@@ -299,6 +362,26 @@ section .card .info_container p.review_created_at_text {
   bottom: 0;
   padding: 0 3rem;
   margin-bottom: 1rem;
+}
+@media screen and (min-width: 576px) {
+  .sign_out_delete_container {
+    padding: 0 20%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sign_out_delete_container {
+    padding: 0 30%;
+  }
+}
+@media screen and (min-width: 992px) {
+  .sign_out_delete_container {
+    padding: 0 35%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .sign_out_delete_container {
+    padding: 0 40%;
+  }
 }
 .sign_out_delete_container .log_out_button {
   text-decoration: none;
