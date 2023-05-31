@@ -88,8 +88,8 @@ $year = date("Y");
             </div>
             <div>
                 <h3>Publication year</h3>
-                <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-                    minlength="2" maxlength="4" min="0">
+                <input type="number" name="year_published" id="year_published" pattern="[0-9]*" minlength="4" maxlength="4" title="Please enter a four-digit number." placeholder="Publication year" required
+                    min="0" max="<?= date("Y") ?>">
             </div>
             <div>
                 <h3>Your review</h3>

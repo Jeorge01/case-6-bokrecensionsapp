@@ -153,8 +153,8 @@ $login_id_check2 = $_SESSION['user_id'];
                 </div>
                 <div>
                     <h3>Publicaation year</h3>
-                    <input type="number" name="year_published" id="year_published" placeholder="Publication year" required
-                        minlength="2" maxlength="4" min="0" value="<?= $year_published ?>">
+                    <input type="number" name="year_published" id="year_published" minlength="4" maxlength="4" placeholder="Publication year" required
+                        min="0" max="<?= date("Y") ?>" value="<?= $year_published ?>">
                 </div>
                 <div>
                     <h3>Review</h3>
