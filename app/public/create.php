@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 session_start();
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->exec($sql);
 
-            header("location: my-reviews.php");
+            header("location: my-reviews.php?create=succes");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }

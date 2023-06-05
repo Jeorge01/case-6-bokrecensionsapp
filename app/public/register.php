@@ -19,14 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $user_name = trim($_POST['user_name']);
     $hashed_user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
-    // if ($user_name === "Lasse" || "lasse") {
-    //     echo "Men hur ska Lasse logga in?";
-    //     exit();
-    // }
 
 
     // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($user_name) >= 2) {
+
+        function taken_user_name($user_name) {
+            global $pdo;
+
+            $sql_select = $pdo->prepare("SELECT COUNT(*) FROM `user` WHERE `user_name` = :user_name");
+            $sql_select->bindParam(':user_name', $user_name);
+            $sql_select->execute();
+            $count = $sql_select->fetchColumn();
+            return $count > 0;
+        }
+
+        $taken = taken_user_name($user_name);
+        
+
+        if ($taken) {
+            header("location: register.php?username_already_exists");
+        }
 
 
 
@@ -37,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->exec($sql);
 
-            header("location: login.php");
+            header("location: login.php?register=success");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }

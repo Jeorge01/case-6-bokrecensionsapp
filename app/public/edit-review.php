@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 session_start();
@@ -36,6 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     $action_delete = isset($_POST['delete']) ? true : false;
 
+    if ($img_url === "") {
+        $img_url = "https://source.unsplash.com/random/?bookcover";
+    }
+
     if ($action_delete) {
         $sql = "DELETE FROM bom WHERE `bom`.`book_id` = $book_id";
 
@@ -64,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             // använd databaskopplingen för att spara till tabellen i databasen
             $result = $pdo->exec($sql);
 
-            header("location: my-reviews.php");
+            header("location: my-reviews.php?edit=succes");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }

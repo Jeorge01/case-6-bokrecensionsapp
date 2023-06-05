@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 session_start();
@@ -11,18 +11,9 @@ $page_title = "My reviews";
 
 $sql = "SELECT * FROM bom WHERE `user_id` = '$_SESSION[user_id]'";
 
-// echo "$sql";
-
 $result = $pdo->prepare($sql);
 $result->execute();
 $rows = $result->fetchAll();
-
-
-
-
-// $book_id = $rows['book_id'];
-// echo "$_SESSION[book_id]";
-
 
 
 ?>

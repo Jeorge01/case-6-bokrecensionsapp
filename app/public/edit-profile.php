@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 session_start();
@@ -127,7 +127,7 @@ $login_id_check2 = $_SESSION['user_id'];
 
     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
         <div class="sign_out_delete_container">
-            <a class="log_out_button" href="login.php">Sign out</a>
+            <a class="log_out_button" href="login.php?logout=success">Sign out</a>
             <a class="delete_user_button" href="">Delete user</a>
         </div>
     </form>

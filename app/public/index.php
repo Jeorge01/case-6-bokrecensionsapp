@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 // setup table user and table book or movie

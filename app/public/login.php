@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "_includes/database-connection.php";
+require_once "_includes/database-connection.php";
 include "_includes/global-functions.php";
 
 setup_user($pdo);
@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             if (!$user) {
                 $_SESSION['message'] = "Username does not exsists";
-                header("location: login.php");
+                header("location: login.php?login=fail");
                 exit();
             }
 
@@ -38,13 +38,13 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
             if (!$correct_password) {
                 $_SESSION['message'] = "Invalid password";
-                header("location: login.php");
+                header("location: login.php?login=fail");
                 exit();
             }
 
             $_SESSION['user_name'] = $user['user_name'];
             $_SESSION['user_id'] = $user['user_id'];
-            header("location: explore.php");
+            header("location: explore.php?login=success");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }
