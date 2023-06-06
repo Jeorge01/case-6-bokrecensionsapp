@@ -143,12 +143,12 @@ $login_id_check2 = $_SESSION['user_id'];
             <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                 <div>
                     <h3>Title</h3>
-                    <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255"
+                    <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="18"
                         value="<?= $title ?>">
                 </div>
                 <div>
                     <h3>Author</h3>
-                    <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="255"
+                    <input type="text" name="author" id="author" placeholder="Author" required minlength="2" maxlength="30"
                         value="<?= $author ?>">
                 </div>
                 <div>

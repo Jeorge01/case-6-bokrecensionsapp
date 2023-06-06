@@ -20,8 +20,26 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $user_password = trim($_POST['user_password']);
     $hashed_user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT);
 
+    function taken_user_name($user_name) {
+        global $pdo;
+
+        $sql_select = $pdo->prepare("SELECT COUNT(*) FROM `user` WHERE `user_name` = :user_name");
+        $sql_select->bindParam(':user_name', $user_name);
+        $sql_select->execute();
+        $count = $sql_select->fetchColumn();
+        return $count > 0;
+    }
+
+    $taken = taken_user_name($user_name);
+    
+
+    if ($taken) {
+        header("location: edit-profile.php?username_already_exists");
+    }
+
     // kontrollera att minst 2 tecken finns i fältet för username
     if (strlen($user_name) >= 2 && strlen($user_password) >= 2) {
+
 
         // spara till databasen
         $sql = "UPDATE `user` SET `user_name` = '$user_name', `user_password` = '$hashed_user_password' WHERE `user_id` = $_SESSION[user_id]";
@@ -32,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             echo "Username and password has been changed!";
             
             $_SESSION['user_name'] = $user_name;
-            header("location: edit-profile.php");
+            header("location: edit-profile.php?changed_username_and_password");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }
@@ -49,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             echo "Username has been changed!";
             
             $_SESSION['user_name'] = $user_name;
-            header("location: edit-profile.php");
+            header("location: edit-profile.php?changed_username");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }
@@ -64,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $result = $pdo->exec($sql);
             echo "Password has been changed!";
             
-            header("location: edit-profile.php");
+            header("location: edit-profile.php?changed_password");
         } catch (PDOException $error) {
             echo "There was a problem " . $error->getMessage();
         }

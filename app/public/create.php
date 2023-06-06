@@ -76,12 +76,12 @@ $year = date("Y");
         <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
             <div>
                 <h3>Title</h3>
-                <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="255">
+                <input type="text" name="title" id="title" placeholder="Title" required minlength="2" maxlength="45">
             </div>
             <div>
                 <h3>Author</h3>
                 <input type="text" name="author" id="author" placeholder="Author" required minlength="2"
-                    maxlength="255">
+                    maxlength="45">
             </div>
             <div>
                 <h3>Image URL</h3>

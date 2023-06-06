@@ -335,6 +335,7 @@ section .card .info_container p.review_created_at_text {
   margin-top: 1rem;
 }
 .edit_profile_container div h3 {
+  color: white;
   font-family: "Satoshi", sans-serif;
   margin-right: 16rem;
   position: absolute;
@@ -342,6 +343,12 @@ section .card .info_container p.review_created_at_text {
   font-weight: 500;
   font-size: 1rem;
   line-height: 24px;
+}
+@media screen and (min-width: 368px) {
+  .edit_profile_container div h3 {
+    font-weight: 500;
+    font-size: 0.75rem;
+  }
 }
 .edit_profile_container div input {
   border-radius: 1rem;
