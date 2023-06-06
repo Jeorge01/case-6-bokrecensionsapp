@@ -11,19 +11,19 @@ Notera att vissa funktioner behöver sätta på manuellt i din dator för att Do
 Detta kan man ta reda på genom att söka upp problemet på Google, Bing eller annan sökmotor.
 Man kommer även behöva använda Visual Studio Code för att öppna projektet och sedan köra ett speciellt komando som kommer senare i beskrivningen.
 
-    1. Ladda ner Docker Desktop och starta om datorn
-    2. Ladda ner detta reposetory på ett ställa i datorn som du kommer ihåg.
-    3. Öppna Visual Studio Code.
-    4. För att öppna det nerladdade reposetoritbehöver du klicka på "File" -> "Open folder..." och sedan välj den mapp med reposetorit du laddade ner.
-    5. När du har reposetorit öppnat i Visual Studio Code så kan du öppna terminalen genom att använda kortkomandot som är "Ctrl" + "Ö".
-    6. Skriv följande komando i terminalen:
+1. Ladda ner Docker Desktop och starta om datorn
+2. Ladda ner detta reposetory på ett ställa i datorn som du kommer ihåg.
+3. Öppna Visual Studio Code.
+4. För att öppna det nerladdade reposetoritbehöver du klicka på "File" -> "Open folder..." och sedan välj den mapp med reposetorit du laddade ner.
+5. När du har reposetorit öppnat i Visual Studio Code så kan du öppna terminalen genom att använda kortkomandot som är "Ctrl" + "Ö".
+6. Skriv följande komando i terminalen:
 
-    ```bash
-    docker-compose up
-    ``` 
+```
+docker-compose up
+``` 
 
-    7. Efter att du har kört detta komando behöver man låra Docker Desktop ladda in containers, volumes etc. När det är färdigladdat kan ni använda applicationen genom att gå in på "localhost:8088" i valfri browser.
-    8. Efter det ska man vara inne på startsidan av applicationen som ska vara redo att användas.
+7. Efter att du har kört detta komando behöver man låra Docker Desktop ladda in containers, volumes etc. När det är färdigladdat kan ni använda applicationen genom att gå in på "localhost:8088" i valfri browser.
+8. Efter det ska man vara inne på startsidan av applicationen som ska vara redo att användas.
 
 
 ## Användning
